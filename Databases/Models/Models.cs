@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace csharp.training.congruent.classes
 {
+    [Table("Foods", Schema = "training")]
+
     public class Food
     {
         public int Id { get; set; }
@@ -41,6 +44,8 @@ namespace csharp.training.congruent.classes
         public ICollection<Human> Humans { get; } = [];
     }
 
+    [Table("FarmAnimals", Schema = "training")]
+
     public class FarmAnimal: Animal
    {
         public FarmAnimal(string name) : base(name)
@@ -70,8 +75,8 @@ namespace csharp.training.congruent.classes
         public override string ToString()
             => $"Farm animal '{Name}' ({Species}/{Id}) worth {Value:C} eats {Food?.ToString() ?? "<Unknown>"}";
     }
-    
 
+    [Table("Cats", Schema = "training")]
     public class Cat(string name, string educationLevel) : Pet(name)
     {
         public string EducationLevel { get; set; } = educationLevel;
@@ -83,7 +88,7 @@ namespace csharp.training.congruent.classes
         public override string ToString()
             => $"Cat '{Name}' ({Species}/{Id}) with education '{EducationLevel}' eats {Food?.ToString() ?? "<Unknown>"}";
     }
-
+    [Table("Dogs", Schema = "training")]
     public class Dog(string name, string favoriteToy) : Pet(name)
     {
         public string FavoriteToy { get; set; } = favoriteToy;
@@ -95,7 +100,7 @@ namespace csharp.training.congruent.classes
         public override string ToString()
             => $"Dog '{Name}' ({Species}/{Id}) with favorite toy '{FavoriteToy}' eats {Food?.ToString() ?? "<Unknown>"}";
     }
-
+    [Table("Humans", Schema = "training")]
     public class Human(string name) : Animal(name)
     {
        

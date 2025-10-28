@@ -16,6 +16,7 @@ namespace WebAPIProject
             builder.Services.Configure<MySettings>(builder.Configuration.GetSection("MySettings"));
             Console.WriteLine("Setting up DB Context");
             Console.WriteLine($"Connection String: {builder.Configuration.GetConnectionString("DefaultConnection")}");
+            // Why do we need this line?    
             SQLServerContext.SetConfiguration(builder.Configuration);
             //builder.Services.AddDbContext<SQLServerContext>(options =>
             //options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));  

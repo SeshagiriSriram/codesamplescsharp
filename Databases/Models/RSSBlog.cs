@@ -1,7 +1,9 @@
-﻿using System.Xml.Linq;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 namespace csharp.training.congruent.classes
 {
+    [Table("RSSBlogs", Schema = "training")]
     public class RSSBlog:Blog
     {
         private string _url;

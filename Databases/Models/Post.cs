@@ -1,5 +1,8 @@
-﻿namespace csharp.training.congruent.classes
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace csharp.training.congruent.classes
 {
+    [Table("Posts", Schema = "training")]
     public class Post
     {
         public int PostId { get; set; }

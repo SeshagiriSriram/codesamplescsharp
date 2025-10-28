@@ -39,7 +39,7 @@ namespace ConsolidatedApp
             modelBuilder.Entity<Pet>()
                 .HasMany(p => p.Humans)
                 .WithMany(h => h.Pets)
-                .UsingEntity(j => j.ToTable("HumanPetLinks"));
+                .UsingEntity(j => j.ToTable("HumanPetLinks","training"));
 
             modelBuilder.Entity<Animal>()
                 .HasOne(a => a.Food)

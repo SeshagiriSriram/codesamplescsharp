@@ -1,9 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 namespace DependencyInjection
 {
     // Both MessageWriter and Logger are injected
     // via Constructor Injection :-) 
-    public sealed class Worker(IMessageWriter messageWriter, ILogger<Worker> _logger) : Microsoft.Extensions.Hosting.BackgroundService
+    public sealed class Worker(ILogger<Worker> _logger,string ?unused, IMessageWriter messageWriter ) : Microsoft.Extensions.Hosting.BackgroundService
     {
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -12,7 +13,7 @@ namespace DependencyInjection
             while (!stoppingToken.IsCancellationRequested)
             {
                 string message = $"Worker running at: {DateTimeOffset.Now}";
-                messageWriter.Write(message);
+                messageWriter.Write(message + $",, unused {unused}");
                 _logger.LogInformation("Worker running at: {time}",DateTimeOffset.Now);
                 //Log4Net Debug now no longer seems to work.... 
                 //_logger.LogDebug("**** And this is an example of a debug message");
