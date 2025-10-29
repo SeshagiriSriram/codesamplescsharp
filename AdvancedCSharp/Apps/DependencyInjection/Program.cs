@@ -14,10 +14,11 @@ using ConfigurationManager = System.Configuration.ConfigurationManager;
 System.Text.Encoding.RegisterProvider(
     System.Text.CodePagesEncodingProvider.Instance);
 
-foreach (string s in ConfigurationManager.AppSettings.AllKeys)
+/*foreach (string s in ConfigurationManager.AppSettings.AllKeys)
 {
     System.Console.WriteLine("App Setting Key:"+s);
 }
+*/
 var categoryName = typeof(Worker).FullName;
 Console.WriteLine($"Expected logger category: {categoryName}");
 // the default is to use app.exe.config 
